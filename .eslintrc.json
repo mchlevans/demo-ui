@@ -1,0 +1,53 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "eslint-plugin-react-hooks"
+    ],
+    "rules": {
+        "semi": "error",
+        "indent": "off",
+        "@typescript-eslint/indent": ["error", 4],
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "": "never",
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+        ],
+        "react/function-component-definition": [
+            "error",
+            {
+                "namedComponents": ["function-declaration", "arrow-function"]
+            }
+          ]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+            "extensions": [".ts", ".tsx"],
+            "moduleDirectory": ["src", "node_modules"]
+            }
+        }
+    }
+}

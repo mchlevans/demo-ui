@@ -1,0 +1,44 @@
+h1, p {
+    color: tan
+}
+
+.chart {
+    grid-area: chart;
+    border: 2px solid black;
+}
+.chart-inputs {
+    grid-area: chart-inputs;
+    border: 2px solid green;
+}
+.output-statistics {
+    grid-area: output-statistics;
+    border: 2px solid blue;
+}
+
+.wrapper {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "chart"
+        "chart-inputs"
+        "output-statistics"
+}
+
+@media (min-width: 500px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "chart"
+            "chart-inputs"
+            "output-statistics";
+    }
+}
+
+@media (min-width: 700px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "chart             chart-inputs"
+            "output-statistics output-statistics"
+    }
+}
