@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import { SingleSelect } from './SingleSelect';
-import { MultiSelect } from './MultiSelect';
+import { SingleSelect } from './SingleSelect'; // should be passed as prop
+import { MultiSelect } from './MultiSelect'; 
 import styles from './style.module.scss';
 
 interface Props {
     setModel: React.Dispatch<(prevState: undefined) => undefined>
 }
 
-export function ModelBuilder ({ setModel }: Props) {
+export function PolyForm ({ setModel }: Props) {
     // temp input hardcodes
     const tempYVariables = ['price'];
     const tempXVariables = ['engineSize', 'peakRpm', 'highwayMpg']
@@ -28,29 +28,23 @@ export function ModelBuilder ({ setModel }: Props) {
 
     async function getModel(yVariable, xVariables, polynomial, setModel) {
         try {
-            console.log('xVariables: ', xVariables)
             const body = {
                 xVarName: Object.keys(xVariables)[0],
                 yVarName: yVariable,
                 polynomial: polynomial
             }
     
-            console.log('request body: ', body);
-    
             // dynamically import SVG, note value is on "default" property
             const result = await axios.post('http://localhost:80/model', body)
             console.log(result.data.data)
             setModel(result.data.data)
         } catch(e) {
-            console.log("+++++++++++++++++");
-            console.log(e);
-            console.log("+++++++++++++++++");
             setModel(undefined)
         } 
     }
 
     return (
-        <div className={styles['chart-inputs']}>
+        <div className={styles.polyForm}>
             <h2>
                 Builder
             </h2>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ModelBuilder } from './ModelBuilder';
+import { PolyForm } from './PolyForm';
+import { PolyStatistics } from './PolyStatistics';
 import styles from './style.module.scss';
 
 const App = () => {
@@ -23,17 +24,14 @@ const App = () => {
                 </div>
                 
                 {/* Chart Inputs */}
-                {/* < div> */}
-                    <ModelBuilder setModel = {setModel}/>
-                {/* </div> */}
-                
+                <div className={styles.chartInputs}>
+                    <PolyForm setModel = {setModel}/>
+                </div>
                 
                 {/* Output Statistics */}
-                {/* <div> */}
-                    <div className={styles['output-statistics']}>
-                        content right
-                    </div>
-                {/* </div> */}
+                <div className={styles.outputStatistics}>
+                    <PolyStatistics/>
+                </div>
             </div>
         </div>
     );

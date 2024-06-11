@@ -1,16 +1,15 @@
-h1, p {
-    color: tan
-}
-
 .chart {
     grid-area: chart;
     border: 2px solid black;
 }
-.chart-inputs {
+
+.chartInputs {
     grid-area: chart-inputs;
     border: 2px solid green;
+    padding-left: 5%;
 }
-.output-statistics {
+
+.outputStatistics {
     grid-area: output-statistics;
     border: 2px solid blue;
 }
