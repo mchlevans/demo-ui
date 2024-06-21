@@ -57,12 +57,14 @@ export default {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
-        path: resolve(__dirname, 'build')
+        path: resolve(__dirname, 'build'),
+        publicPath: '/'
     },
     devServer: {
         hot: true,
         port: 8085,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     resolve: {
         // leave off extensions on import

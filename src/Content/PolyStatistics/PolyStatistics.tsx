@@ -6,8 +6,8 @@ import styles from './style.module.scss';
  */
 export function PolyStatistics() {
     return (
-        <div>
-            Poly Statistics
+        <div className={styles.summaryStatsContainer}>
+            Summary Statistics
         </div>
     )    
 }

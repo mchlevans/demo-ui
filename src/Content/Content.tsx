@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { PolyForm } from './PolyForm';
 import { PolyStatistics } from './PolyStatistics';
+import { Model } from './types';
 import styles from './style.module.scss';
 
-const App = () => {
-    const [ model, setModel ] = useState();
+export function Content() {
+    const [ model, setModel ] = useState<Model>();
 
     function createGraph() {
         if (model?.figure) {
-            return <iframe srcDoc={model.figure}></iframe>
+            return (
+                <>
+                    <div> Results: </div>
+                    <iframe srcDoc={model.figure}></iframe>
+                    mse: {model.mse}
+                    R-Squared: {model.rsquared}
+                </>
+            )
         } else {
-            return <iframe></iframe>
+            return <div> Build Model with input section </div>
         }
     }
 
@@ -25,6 +33,7 @@ const App = () => {
                 
                 {/* Chart Inputs */}
                 <div className={styles.chartInputs}>
+                    <div> Inputs: </div>
                     <PolyForm setModel = {setModel}/>
                 </div>
                 
@@ -36,5 +45,3 @@ const App = () => {
         </div>
     );
 };
-
-export default App;

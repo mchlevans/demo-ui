@@ -1,0 +1,53 @@
+$top-padding: 10px;
+
+.chart {
+    padding-top: $top-padding;
+    border-top: solid 1px #e3e3e3;
+    grid-area: chart;
+}
+
+iframe {
+    border: none;
+}
+
+.chartInputs {
+    padding-top: $top-padding;
+    padding-left: 5%;
+    border-top: solid 1px #e3e3e3;
+    grid-area: chart-inputs;
+}
+
+.outputStatistics {
+    padding-top: $top-padding;
+    grid-area: output-statistics;
+    border-top: solid 1px #e3e3e3;
+    height: 100%;
+}
+
+.wrapper {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "chart"
+        "chart-inputs"
+        "output-statistics"
+}
+
+@media (min-width: 500px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "chart"
+            "chart-inputs"
+            "output-statistics";
+    }
+}
+
+@media (min-width: 700px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "chart             chart-inputs"
+            "output-statistics output-statistics"
+    }
+}
