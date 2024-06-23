@@ -4,12 +4,12 @@ import Button from '@mui/material/Button';
 import { SingleSelect } from './SingleSelect'; // should be passed as prop
 import { MultiSelect } from './MultiSelect';
 import { Model } from '../types';
+import { endpoints } from '../../configs';
 import { 
     VehicleVariable,
     PolyFormProps,
     ApiSuccessResponse,
-    SetModel,
-    
+    SetModel
 } from './types';
 import styles from './style.module.scss';
 
@@ -27,12 +27,13 @@ export function PolyForm ({ setModel }: PolyFormProps) {
     // fetch car attributes to use as model inputs
     useEffect(() => {
         try {
-            axios.get<VehicleVariable[]>('http://localhost:80/vehicle/variables')
+            const url = endpoints[MODE] + '/vehicle/variables';
+            axios.get<ApiSuccessResponse<VehicleVariable[]>>(url)
             .then(response => {
-                response.data.sort(
+                response.data.data.sort(
                     (a: VehicleVariable, b: VehicleVariable) => a.displayName < b.displayName ? -1 : 1
                 );
-                setVehicleVariables(response.data);
+                setVehicleVariables(response.data.data);
             })
         } catch (e) {
             setVehicleVariables([]);
@@ -53,9 +54,8 @@ export function PolyForm ({ setModel }: PolyFormProps) {
                 yVarName: yVariable,
                 polynomial: polynomial
             }
-            const path = 'http://localhost:80/model';
-            
-            const result = await axios.post<ApiSuccessResponse<Model>>(path, body)
+            const url = endpoints[MODE] + '/model';
+            const result = await axios.post<ApiSuccessResponse<Model>>(url, body)
             setModel(result.data.data)
         } catch(e) {
             setModel(undefined)

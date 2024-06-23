@@ -15,6 +15,7 @@ import { fileURLToPath} from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import dotenv from 'dotenv';
+import webpack from 'webpack';
 
 dotenv.config();
 
@@ -120,6 +121,9 @@ export default {
             template: 'index.html',
             chunks: ['Analytics']
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new webpack.DefinePlugin({
+            MODE: JSON.stringify(mode)
+        })
     ]
 }
