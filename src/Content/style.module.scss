@@ -6,15 +6,20 @@ $top-padding: 10px;
     grid-area: chart;
 }
 
-iframe {
+.chartIframe {
     border: none;
+    width: 100%;
+    height: 500px;
+    overflow: scroll;
+    margin: 0px;
+    padding: 0px;
 }
 
 .chartInputs {
     padding-top: $top-padding;
-    padding-left: 5%;
     border-top: solid 1px #e3e3e3;
     grid-area: chart-inputs;
+    height: fit-content;
 }
 
 .outputStatistics {
@@ -27,27 +32,19 @@ iframe {
 .wrapper {
     display: grid;
     gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content auto;
     grid-template-areas:
-        "chart"
-        "chart-inputs"
-        "output-statistics"
+        "chart             chart-inputs"
+        "output-statistics output-statistics"
 }
 
-@media (min-width: 500px) {
+@media (max-width: 1290px) {
     .wrapper {
         grid-template-columns: 1fr;
         grid-template-areas:
-            "chart"
             "chart-inputs"
+            "chart"
             "output-statistics";
-    }
-}
-
-@media (min-width: 700px) {
-    .wrapper {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "chart             chart-inputs"
-            "output-statistics output-statistics"
     }
 }

@@ -1,7 +1,61 @@
+.multiselectContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
+    grid-area: multiselectContainer;
+}
 
-.polyForm {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.polynomial {
+    grid-area: polynomial;
+    align-content: center;
+}
+
+.dependentVariable {
+    grid-area: dependentVariable;
+    align-content: center;
+}
+
+.formDivider1 {
+    grid-area: formDivider1;
+}
+
+.formDivider2 {
+    grid-area: formDivider2;
+    font-weight: bold;
+    align-content: center;
+}
+
+.submitForm {
+    grid-area: submitForm;
+}
+
+.wrapper {
+    height: 400px;
+    column-gap: 5%;
+    row-gap: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "dependentVariable      polynomial"
+        "formDivider2            formDivider2"
+        "multiselectContainer   multiselectContainer"
+        "submitForm             submitForm"
+}
+
+
+@media (max-width: 399px) {
+    .multiselectContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .wrapper {
+        height: 600px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "dependentVariable"
+            "polynomial"
+            "formDivider2"
+            "multiselectContainer"
+            "submitForm"
+    }
 }

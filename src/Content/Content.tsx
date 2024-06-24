@@ -11,10 +11,9 @@ export function Content() {
         if (model?.figure) {
             return (
                 <>
-                    <div> Results: </div>
-                    <iframe srcDoc={model.figure}></iframe>
-                    mse: {model.mse}
-                    R-Squared: {model.rsquared}
+                    <iframe className={styles.chartIframe} srcDoc={model.figure}></iframe>
+                    {/* mse: {model.mse} */}
+                    {/* R-Squared: {model.rsquared} */}
                 </>
             )
         } else {
@@ -33,7 +32,6 @@ export function Content() {
                 
                 {/* Chart Inputs */}
                 <div className={styles.chartInputs}>
-                    <div> Inputs: </div>
                     <PolyForm setModel = {setModel}/>
                 </div>
                 

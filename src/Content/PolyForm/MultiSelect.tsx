@@ -1,12 +1,13 @@
 import * as React from 'react';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { 
     VehicleVariable,
+    MultiSelectProps
 } from './types';
+import styles from './style.module.scss';
 
-export function MultiSelect({ activeItems, items, setActiveItems }: Props) {
+export function MultiSelect({ activeItems, items, setActiveItems }: MultiSelectProps) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name;
         activeItems.has(name) ? activeItems.delete(name) : activeItems.add(name)
@@ -37,8 +38,8 @@ export function MultiSelect({ activeItems, items, setActiveItems }: Props) {
     }
 
     return (
-        <FormGroup>
+        <div className={styles.multiselectContainer}>
             { createFormControllerLabels(items, activeItems) }
-        </FormGroup>
+        </div>
     );
 }

@@ -5,7 +5,9 @@ export interface PolyFormProps {
 }
 
 export interface MultiSelectProps {
-   activeItems: Set<string> 
+   activeItems: Set<string>
+   items: VehicleVariable[]
+   setActiveItems:  React.Dispatch<React.SetStateAction<Set<string>>>
 }
 
 export type SetModel = React.Dispatch<React.SetStateAction<Model>>

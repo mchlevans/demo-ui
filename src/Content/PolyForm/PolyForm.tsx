@@ -17,9 +17,10 @@ import styles from './style.module.scss';
 export function PolyForm ({ setModel }: PolyFormProps) {
     const tempYVariables = ['price']; // temp input hardcodes
     const polynomialMax = 10;
+    const defaultPolynomial = 3;
 
     const [ vehicleVariables, setVehicleVariables ] = useState<VehicleVariable[]>([]);
-    const [ polynomial, setPolynomial ] = useState(0);
+    const [ polynomial, setPolynomial ] = useState(defaultPolynomial);
     const [ yVariable, setYVariable ] = useState<string>(tempYVariables[0]);
     const [ xVariables, setXVariables ] = useState<Set<string>>(new Set<string>());
     
@@ -62,32 +63,61 @@ export function PolyForm ({ setModel }: PolyFormProps) {
         } 
     }
 
+    function getSubmitButton(polynomial: number, yVariable: string, xVariables: Set<string>) {
+        if (polynomial !== undefined && 
+            yVariable !== undefined &&
+            xVariables.size > 0
+        ) {
+            return (
+                <Button className={styles.submitForm} variant="outlined" onClick={formSubmit}> 
+                    Build 
+                </Button>
+            )
+        }
 
-    const formSubmit = () => getModel(
-        yVariable,
-        Array.from(xVariables.keys()),
-        polynomial,
-        setModel
-    );
+        return (
+            <Button className={styles.submitForm} variant="outlined" disabled> 
+                Build 
+            </Button>
+        ) 
+    }
+
+    const formSubmit = () => {
+        return getModel(
+            yVariable,
+            Array.from(xVariables.keys()),
+            polynomial,
+            setModel
+        )
+    };
 
 
     return (
-        <div className={styles.polyForm}>
-            {/* Polynomial input */}
-            {SingleSelect({
-                value: polynomial,
-                setValue: setPolynomial,
-                label: "Polynomial",
-                items: [...Array(polynomialMax).keys()]
-            })}
+        <div className={styles.wrapper}>
 
             {/* Dependent variable input */}
-            {SingleSelect({
-                value: yVariable,
-                setValue: setYVariable,
-                label: "y Variable",
-                items: tempYVariables
-            })}
+            <div  className={styles.dependentVariable}>
+                {SingleSelect({
+                    value: yVariable,
+                    setValue: setYVariable,
+                    label: "Dependent Variable",
+                    items: tempYVariables
+                })}
+            </div>
+
+            {/* Polynomial input */}
+            <div  className={styles.polynomial}>
+                {SingleSelect({
+                    value: polynomial,
+                    setValue: setPolynomial,
+                    label: "Polynomial",
+                    items: [...Array(polynomialMax).keys()]
+                })}
+            </div>
+    
+            <div className={styles.formDivider2}  >
+                Independent Variables:
+            </div>
 
             {/* Independent variable input */}
             {MultiSelect({
@@ -97,11 +127,7 @@ export function PolyForm ({ setModel }: PolyFormProps) {
                 setActiveItems: setXVariables
             })}
             
-            
-            {/* Submit Model request */}
-            <Button variant="outlined" onClick={formSubmit}> 
-                Build 
-            </Button>
+            {getSubmitButton(polynomial, yVariable, xVariables)}            
         </div>
     );
 };

@@ -4,7 +4,7 @@ import styles from './style.module.scss'
 
 export function AppContainer() {
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.mainContainer}>
             <div className={styles.side}>
                 <nav>
                     <ul>
@@ -17,8 +17,10 @@ export function AppContainer() {
                     </ul>     
                 </nav>
             </div>
-            <div className={styles.content}> 
-                <Outlet/>
+            <div className={styles.wrapper}>
+                <div className={styles.content}> 
+                    <Outlet/>
+                </div>
             </div>
         </div>
     )
