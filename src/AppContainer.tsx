@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from "react-router-dom";
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
 export function AppContainer() {
     return (

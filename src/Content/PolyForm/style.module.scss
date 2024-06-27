@@ -21,7 +21,8 @@
 
 .formDivider2 {
     grid-area: formDivider2;
-    font-weight: bold;
+    // font-weight: bold;
+    font-style: italic;
     align-content: center;
 }
 
@@ -30,9 +31,9 @@
 }
 
 .wrapper {
-    height: 400px;
+    height: 450px; // make variable
     column-gap: 5%;
-    row-gap: 5%;
+    row-gap: 2%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:

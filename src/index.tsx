@@ -7,6 +7,7 @@ import {
 
 import { AppContainer } from './AppContainer';
 import { Content } from './Content';
+import { About } from './About';
 import './style.scss'; // require for bundling
 
 const container = document.getElementById('root');
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'About',
-                element: <div> temp about page </div>
+                element: <About/>
             }
         ]
     }

@@ -17,12 +17,19 @@ export function Content() {
                 </>
             )
         } else {
-            return <div> Build Model with input section </div>
+            return <div className={styles.chartPlaceholder}> Build Model With Vehicle Attributes </div>
         }
     }
 
     return (
         <div>
+            <div className={styles.pageTitle}>
+                <h1>
+                    Vehicle Modeler
+                </h1>
+            </div>
+            
+            {/* this is the content section */}
             <div className={styles.wrapper}>
                 
                 {/* Chart */}
