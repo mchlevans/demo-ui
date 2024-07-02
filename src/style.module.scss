@@ -4,6 +4,7 @@
 
 $side-padding: 30px;
 $top-padding: 10px;
+$bottom-padding: 20px;
 
 .mainContainer {
     display: flex;
@@ -50,26 +51,17 @@ $top-padding: 10px;
 }
 
 .content {
-    border: 2px solid green;
-    // padding: $top-padding;
     padding-top: $top-padding;
     padding-left: 40px;
     padding-right: 40px;
+    padding-bottom: $bottom-padding;
     overflow: scroll;
 }
 
-.footer {
-    border: 2px solid gray;
-    padding-left: $side-padding;
-    padding-right: $side-padding
-}
-
 .wrapper {
-    border: 2px solid black;
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: 2%;
-    
     height: 100%;
     width: 100%;
 }

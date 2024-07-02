@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import { AppContainer } from './AppContainer';
-import { Content } from './Content';
+import { VehicleAnalysis } from './VehicleAnalysis';
 import { About } from './About';
 import './style.scss'; // require for bundling
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'polynomial-model',
-                element: <Content/>
+                element: <VehicleAnalysis/>
             },
             {
                 path: 'About',

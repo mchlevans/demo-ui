@@ -1,0 +1,1 @@
+docker build --progress=plain -t autos-proxy -f mock.proxy.Dockerfile .
