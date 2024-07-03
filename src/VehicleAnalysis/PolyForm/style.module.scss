@@ -1,3 +1,7 @@
+// duplicated in vehicle analysis, 
+// need to make single variable
+$chart-height: 450px;
+
 .multiselectContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -15,13 +19,8 @@
     align-content: center;
 }
 
-.formDivider1 {
-    grid-area: formDivider1;
-}
-
 .formDivider2 {
     grid-area: formDivider2;
-    // font-weight: bold;
     font-style: italic;
     align-content: center;
 }
@@ -31,7 +30,7 @@
 }
 
 .wrapper {
-    height: 450px; // make variable
+    height: $chart-height;
     column-gap: 5%;
     row-gap: 2%;
     display: grid;

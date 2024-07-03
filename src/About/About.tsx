@@ -8,7 +8,6 @@ export function About() {
             title='About'
             content={
                 <div>
-                    {/* <div>  content </div> */}
                     <img src={diagram} className={styles.diagram}/>
                     <h2> Purpose </h2>
                     <p> 

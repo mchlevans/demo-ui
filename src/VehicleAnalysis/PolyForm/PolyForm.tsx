@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import { SingleSelect } from './SingleSelect'; // should be passed as prop
+import { SingleSelect } from './SingleSelect';
 import { MultiSelect } from './MultiSelect';
 import { Model } from '../types';
 import { endpoints } from '../../configs';
@@ -15,7 +15,12 @@ import styles from './style.module.scss';
 
 
 export function PolyForm ({ setModel }: PolyFormProps) {
-    const tempYVariables = ['price']; // temp input hardcodes
+    /* 
+        Hard coding dependent variable to "price"
+        from the vehicle data set for now. Considering
+        making this dynamic to be any vehicle attribute.
+    */
+    const tempYVariables = ['price'];
     const polynomialMax = 10;
     const defaultPolynomial = 3;
 
@@ -24,7 +29,6 @@ export function PolyForm ({ setModel }: PolyFormProps) {
     const [ yVariable, setYVariable ] = useState<string>(tempYVariables[0]);
     const [ xVariables, setXVariables ] = useState<Set<string>>(new Set<string>());
     
-
     // fetch car attributes to use as model inputs
     useEffect(() => {
         try {

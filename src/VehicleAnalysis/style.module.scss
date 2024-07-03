@@ -1,3 +1,5 @@
+// hart-height duplicated in form, 
+// need to make single variable
 $top-padding: 10px;
 $chart-height: 450px;
 
@@ -24,7 +26,6 @@ $chart-height: 450px;
 }
 
 .chart {
-    // border: 2px solid gray;
     grid-area: chart;
 }
 
@@ -36,7 +37,6 @@ $chart-height: 450px;
 }
 
 .chartInputs {
-    // border: 2px solid gray;
     grid-area: chart-inputs;
 }
 

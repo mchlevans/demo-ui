@@ -4,7 +4,7 @@ import { ManufacturerMetrics } from './types';
 import styles from './style.module.scss';
 
 /**
- * Organizes Summary statistics from polynomical model
+ * Overview of Vehicle Dataset
  */
 export function PolyStatistics() {
     function getManufacturerRows(manufacturerSummary: ManufacturerMetrics[]) {

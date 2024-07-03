@@ -13,8 +13,6 @@ export function VehicleAnalysis() {
             return (
                 <>
                     <iframe className={styles.chartIframe} srcDoc={model.figure}></iframe>
-                    {/* mse: {model.mse} */}
-                    {/* R-Squared: {model.rsquared} */}
                 </>
             )
         } else {
