@@ -10,10 +10,11 @@ export function PolyStatistics() {
     function getManufacturerRows(manufacturerSummary: ManufacturerMetrics[]) {
         const results = [];
 
-        for (const item of manufacturerSummary) {
+        for (let i = 0; i < manufacturerSummary.length; i++) {
+            const item = manufacturerSummary[i];
             const { manufacturer, count } = item;
             results.push(
-                <tr>
+                <tr key = {`manufacturerSummaryTr${i}`}>
                     <td> {manufacturer} </td>
                     <td> {count} </td>
                 </tr>
@@ -35,11 +36,15 @@ export function PolyStatistics() {
 
 
             <table>
-                <tr>
-                    <th> Manufacturer </th>
-                    <th> Vehicle Count </th>
-                </tr>
-                {getManufacturerRows(manufacturerSummary)}
+                <thead>
+                    <tr>
+                        <th> Manufacturer </th>
+                        <th> Vehicle Count </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {getManufacturerRows(manufacturerSummary)}
+                </tbody>
             </table>
         </div>
     )
