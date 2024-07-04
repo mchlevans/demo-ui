@@ -1,7 +1,8 @@
-import { Model } from '../types';
+import { Model, LoadStatus } from '../types';
 
 export interface PolyFormProps {
-    setModel: SetModel
+    setModel: SetModel,
+    setModelStatus: SetModelStatus
 }
 
 export interface MultiSelectProps {
@@ -11,6 +12,7 @@ export interface MultiSelectProps {
 }
 
 export type SetModel = React.Dispatch<React.SetStateAction<Model>>
+export type SetModelStatus = React.Dispatch<React.SetStateAction<LoadStatus>>
 
 export interface VehicleVariable {
     displayName: string,

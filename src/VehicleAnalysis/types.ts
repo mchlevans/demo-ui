@@ -3,3 +3,9 @@ export interface Model {
     mse: string,
     rsquared: string
 }
+
+export enum LoadStatus {
+    Loading = 'Loading',
+    Loaded = 'Loaded',
+    Error = 'Error'
+}
