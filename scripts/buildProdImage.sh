@@ -1,0 +1,1 @@
+docker build --no-cache --progress=plain -t autos-proxy -f prod.proxy.Dockerfile .

@@ -1,0 +1,61 @@
+// duplicated in vehicle analysis, 
+// need to make single variable
+$chart-height: 450px;
+
+.multiselectContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
+    grid-area: multiselectContainer;
+}
+
+.polynomial {
+    grid-area: polynomial;
+    align-content: center;
+}
+
+.dependentVariable {
+    grid-area: dependentVariable;
+    align-content: center;
+}
+
+.formDivider2 {
+    grid-area: formDivider2;
+    font-style: italic;
+    align-content: center;
+}
+
+.submitForm {
+    grid-area: submitForm;
+}
+
+.wrapper {
+    height: $chart-height;
+    column-gap: 5%;
+    row-gap: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "dependentVariable      polynomial"
+        "formDivider2            formDivider2"
+        "multiselectContainer   multiselectContainer"
+        "submitForm             submitForm"
+}
+
+
+@media (max-width: 399px) {
+    .multiselectContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .wrapper {
+        height: 600px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "dependentVariable"
+            "polynomial"
+            "formDivider2"
+            "multiselectContainer"
+            "submitForm"
+    }
+}

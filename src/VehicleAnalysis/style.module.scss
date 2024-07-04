@@ -1,0 +1,69 @@
+// hart-height duplicated in form, 
+// need to make single variable
+$top-padding: 10px;
+$chart-height: 450px;
+
+.chartPlaceholder {
+    width: 100%;
+    height: $chart-height;
+    background: #c8c8c8;
+    margin-right: 2rem;
+    border-radius: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+
+    font-style: italic;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-align: center
+}
+
+.chart {
+    grid-area: chart;
+}
+
+.chartIframe {
+    border: none;
+    width: 100%;
+    height: $chart-height;
+    overflow: scroll;
+}
+
+.chartInputs {
+    grid-area: chart-inputs;
+}
+
+.outputStatistics {
+    padding-top: $top-padding;
+    grid-area: output-statistics;
+    border-top: solid 1px #e3e3e3;
+    height: 100%;
+}
+
+.wrapper {
+    padding-top: $top-padding;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content auto;
+    grid-template-areas:
+        "chart             chart-inputs"
+        "output-statistics output-statistics"
+}
+
+@media (max-width: 1290px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "chart-inputs"
+            "chart"
+            "output-statistics";
+    }
+}

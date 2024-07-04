@@ -32,14 +32,13 @@ export function SingleSelect({ setValue, value, label, items }: Props) {
 
     return (
         <div>
-            <FormControl id="formcontrol" sx={{ m: 1, minWidth: 120 }}>
+            <FormControl id="formcontrol" fullWidth={true}>
                 <InputLabel id={`inputLabel${label}`}>{label}</InputLabel>
                 <Select
                     labelId="single-select"
                     id="single-select"
                     value={value}
                     onChange={handleChange}
-                    autoWidth
                     label={label}
                 >
                     { generateItems(items) }

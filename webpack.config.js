@@ -15,6 +15,7 @@ import { fileURLToPath} from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import dotenv from 'dotenv';
+import webpack from 'webpack';
 
 dotenv.config();
 
@@ -57,12 +58,14 @@ export default {
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
-        path: resolve(__dirname, 'build')
+        path: resolve(__dirname, 'build'),
+        publicPath: '/'
     },
     devServer: {
         hot: true,
         port: 8085,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     resolve: {
         // leave off extensions on import
@@ -118,6 +121,9 @@ export default {
             template: 'index.html',
             chunks: ['Analytics']
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new webpack.DefinePlugin({
+            MODE: JSON.stringify(mode)
+        })
     ]
 }
