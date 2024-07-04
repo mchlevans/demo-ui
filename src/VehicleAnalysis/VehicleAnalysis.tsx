@@ -2,22 +2,26 @@ import React, { useState } from 'react';
 import { PolyForm } from './PolyForm';
 import { PolyStatistics } from './PolyStatistics';
 import { ContentTitlePage } from '../ContentTitlePage';
-import { Model } from './types';
+import { Model, LoadStatus } from './types';
 import styles from './style.module.scss';
 
 export function VehicleAnalysis() {
+    const [ modelStatus, setModelStatus ] = useState<LoadStatus>();
     const [ model, setModel ] = useState<Model>();
 
     function createGraph() {
-        if (model?.figure) {
+        if (modelStatus === LoadStatus.Loading) {
+            return <div className={styles.chartPlaceholder}> ... Loading Model ... </div>
+        } else if (modelStatus === LoadStatus.Error) {
+            return <div className={styles.chartPlaceholder}> Unable To Load Model </div>
+        } else if (modelStatus === LoadStatus.Loaded) {
             return (
                 <>
                     <iframe className={styles.chartIframe} srcDoc={model.figure}></iframe>
                 </>
             )
-        } else {
-            return <div className={styles.chartPlaceholder}> Build Model With Vehicle Attributes </div>
         }
+        return <div className={styles.chartPlaceholder}> Build Model With Vehicle Attributes </div>
     }
 
     return (
@@ -32,7 +36,10 @@ export function VehicleAnalysis() {
                     
                     {/* Chart Inputs */}
                     <div className={styles.chartInputs}>
-                        <PolyForm setModel = {setModel}/>
+                        <PolyForm
+                            setModel = {setModel}
+                            setModelStatus = {setModelStatus}
+                        />
                     </div>
                     
                     {/* Output Statistics */}
