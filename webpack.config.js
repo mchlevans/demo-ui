@@ -22,7 +22,7 @@ dotenv.config();
 const mode = process.env.mode;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
-const isDevelopment = mode === 'production' ? false : true;
+const isDevelopment = mode !== 'production';
 
 // regex patterns used for determining which
 // loaders are needed
