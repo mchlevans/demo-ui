@@ -26,7 +26,7 @@ export function VehicleAnalysis() {
 
     return (
         <ContentTitlePage 
-            title='Vehicle Modeler'
+            title='Polynomial Model: Vehicle Dataset'
             content = {
                 <div className={styles.wrapper}>
                     {/* Chart */}

@@ -20,6 +20,10 @@ const router = createBrowserRouter([
         errorElement: <div> no page here </div>,
         children: [
             {
+                path: '',
+                element: <VehicleAnalysis/>
+            },
+            {
                 path: 'polynomial-model',
                 element: <VehicleAnalysis/>
             },

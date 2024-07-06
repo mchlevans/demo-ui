@@ -2,3 +2,19 @@
     max-width: 100%;
     height: auto;
 }
+
+.aboutTable {
+    width: 300px;
+    margin: 0;
+
+    tr, td {
+        border: none;
+        background-color: white;
+    }
+}
+
+@media (max-width: 332px) {
+    .aboutTable {
+        width: 250px;
+    }
+}
