@@ -13,7 +13,7 @@ export function About() {
                     <h2> Purpose </h2>
                     <p> 
                         This site is built for demonstration purposes as an exercise in using microservices to construct an analytics dashboard.
-                        I may reuse this platform in the future for any interesting analysis that comes up!
+                        I just might reuse this platform in the future for any interesting analysis that comes up!
                     </p>
                     <p>
                         Python has rich selection of open source libraries for data analysis, but you may not wish to use 
@@ -22,7 +22,7 @@ export function About() {
                     </p>
                     <p>
                         Feel free to read about each of the services below, and check out the linked source code. As of writing this, there
-                        are still plenty of enhancements and to-do items I've pushed out.
+                        are still plenty of enhancements and to-do items I've pushed out:
                     </p>
                     
                     <table className={styles.aboutTable}>

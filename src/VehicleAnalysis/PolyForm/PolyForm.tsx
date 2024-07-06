@@ -92,7 +92,7 @@ export function PolyForm ({ setModel, setModelStatus }: PolyFormProps) {
         ) 
     }
 
-    function displayIndependentVariables(vehicleVariablesStatus: string) {
+    function displayIndependentVariables() {
         if (vehicleVariablesStatus === LoadStatus.Loading) {
             return <CircularProgress/>
         } else if (vehicleVariablesStatus === LoadStatus.Error) {
@@ -138,10 +138,10 @@ export function PolyForm ({ setModel, setModelStatus }: PolyFormProps) {
             </div>
     
             {/* Independent Variables */}
-            <div className={styles.formDivider2}  >
+            <div className={styles.formDivider2}>
                 Independent Variables:
             </div>
-            {displayIndependentVariables(vehicleVariablesStatus)}
+            {displayIndependentVariables()}
             
             {/* Submit */}
             {displaySubmitButton(polynomial, yVariable, xVariables)}            
