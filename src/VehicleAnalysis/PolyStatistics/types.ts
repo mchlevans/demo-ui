@@ -1,4 +1,4 @@
 export interface ManufacturerMetrics {
-    manufacturer: string,
-    count: number
+    manufacturer: string;
+    count: number;
 }

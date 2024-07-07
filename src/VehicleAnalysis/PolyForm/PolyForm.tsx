@@ -6,17 +6,16 @@ import { SingleSelect } from './SingleSelect';
 import { MultiSelect } from './MultiSelect';
 import { Model } from '../types';
 import { endpoints } from '../../configs';
-import { 
+import {
     VehicleVariable,
     PolyFormProps,
     ApiSuccessResponse,
-    SetModel
+    SetModel,
 } from './types';
-import { LoadStatus } from '../types'
+import { LoadStatus } from '../types';
 import styles from './style.module.scss';
 
-
-export function PolyForm ({ setModel, setModelStatus }: PolyFormProps) {
+export function PolyForm({ setModel, setModelStatus }: PolyFormProps) {
     /* 
         Hard coding dependent variable to "price"
         from the vehicle data set for now. Considering
@@ -26,28 +25,35 @@ export function PolyForm ({ setModel, setModelStatus }: PolyFormProps) {
     const polynomialMax = 10;
     const defaultPolynomial = 3;
 
-    const [ vehicleVariablesStatus, setVehicleVariablesStatus ] = useState<LoadStatus>(LoadStatus.Loading);
-    const [ vehicleVariables, setVehicleVariables ] = useState<VehicleVariable[]>([]);
-    const [ polynomial, setPolynomial ] = useState(defaultPolynomial);
-    const [ yVariable, setYVariable ] = useState<string>(tempYVariables[0]);
-    const [ xVariables, setXVariables ] = useState<Set<string>>(new Set<string>());
-    
+    const [vehicleVariablesStatus, setVehicleVariablesStatus] =
+        useState<LoadStatus>(LoadStatus.Loading);
+    const [vehicleVariables, setVehicleVariables] = useState<VehicleVariable[]>(
+        []
+    );
+    const [polynomial, setPolynomial] = useState(defaultPolynomial);
+    const [yVariable, setYVariable] = useState<string>(tempYVariables[0]);
+    const [xVariables, setXVariables] = useState<Set<string>>(
+        new Set<string>()
+    );
+
     // fetch car attributes to use as model inputs
     useEffect(() => {
         const url = endpoints[MODE] + '/vehicle/variables';
-        axios.get<ApiSuccessResponse<VehicleVariable[]>>(url)
-            .then(response => {
+        axios
+            .get<ApiSuccessResponse<VehicleVariable[]>>(url)
+            .then((response) => {
                 response.data.data.sort(
-                    (a: VehicleVariable, b: VehicleVariable) => a.displayName < b.displayName ? -1 : 1
+                    (a: VehicleVariable, b: VehicleVariable) =>
+                        a.displayName < b.displayName ? -1 : 1
                 );
                 setVehicleVariables(response.data.data);
                 setVehicleVariablesStatus(LoadStatus.Loaded);
             })
-            .catch(error => {
+            .catch((error) => {
                 setVehicleVariablesStatus(LoadStatus.Error);
                 setVehicleVariables([]);
-            })
-    }, [])
+            });
+    }, []);
 
     // fetch model for given inputs
     async function getModel(
@@ -60,49 +66,66 @@ export function PolyForm ({ setModel, setModelStatus }: PolyFormProps) {
             const body = {
                 xVarNames: xVariables,
                 yVarName: yVariable,
-                polynomial: polynomial
-            }
+                polynomial: polynomial,
+            };
             setModelStatus(LoadStatus.Loading);
             const url = endpoints[MODE] + '/model';
-            const result = await axios.post<ApiSuccessResponse<Model>>(url, body);
+            const result = await axios.post<ApiSuccessResponse<Model>>(
+                url,
+                body
+            );
             setModel(result.data.data);
             setModelStatus(LoadStatus.Loaded);
-        } catch(e) {
+        } catch (e) {
             setModelStatus(LoadStatus.Error);
-            setModel(undefined)
-        } 
+            setModel(undefined);
+        }
     }
 
-    function displaySubmitButton(polynomial: number, yVariable: string, xVariables: Set<string>) {
-        if (polynomial !== undefined && 
+    function displaySubmitButton(
+        polynomial: number,
+        yVariable: string,
+        xVariables: Set<string>
+    ) {
+        if (
+            polynomial !== undefined &&
             yVariable !== undefined &&
             xVariables.size > 0
         ) {
             return (
-                <Button className={styles.submitForm} variant="outlined" onClick={formSubmit}> 
-                    Build 
+                <Button
+                    className={styles.submitForm}
+                    variant="outlined"
+                    onClick={formSubmit}
+                >
+                    Build
                 </Button>
-            )
+            );
         }
 
         return (
-            <Button className={styles.submitForm} variant="outlined" disabled> 
-                Build 
+            <Button className={styles.submitForm} variant="outlined" disabled>
+                Build
             </Button>
-        ) 
+        );
     }
 
     function displayIndependentVariables() {
         if (vehicleVariablesStatus === LoadStatus.Loading) {
-            return <CircularProgress/>
+            return <CircularProgress />;
         } else if (vehicleVariablesStatus === LoadStatus.Error) {
-            return <p> Unable to load vehicle variables, please try again later </p>
+            return (
+                <p>
+                    {' '}
+                    Unable to load vehicle variables, please try again later{' '}
+                </p>
+            );
         } else {
             return MultiSelect({
                 activeItems: xVariables,
                 items: vehicleVariables,
-                setActiveItems: setXVariables
-            })
+                setActiveItems: setXVariables,
+            });
         }
     }
 
@@ -112,39 +135,37 @@ export function PolyForm ({ setModel, setModelStatus }: PolyFormProps) {
             Array.from(xVariables.keys()),
             polynomial,
             setModel
-        )
+        );
     };
 
     return (
         <div className={styles.wrapper}>
             {/* Dependent Variables */}
-            <div  className={styles.dependentVariable}>
+            <div className={styles.dependentVariable}>
                 {SingleSelect({
                     value: yVariable,
                     setValue: setYVariable,
-                    label: "Dependent Variable",
-                    items: tempYVariables
+                    label: 'Dependent Variable',
+                    items: tempYVariables,
                 })}
             </div>
 
             {/* Polynomial */}
-            <div  className={styles.polynomial}>
+            <div className={styles.polynomial}>
                 {SingleSelect({
                     value: polynomial,
                     setValue: setPolynomial,
-                    label: "Polynomial",
-                    items: [...Array(polynomialMax).keys()]
+                    label: 'Polynomial',
+                    items: [...Array(polynomialMax).keys()],
                 })}
             </div>
-    
+
             {/* Independent Variables */}
-            <div className={styles.formDivider2}>
-                Independent Variables:
-            </div>
+            <div className={styles.formDivider2}>Independent Variables:</div>
             {displayIndependentVariables()}
-            
+
             {/* Submit */}
-            {displaySubmitButton(polynomial, yVariable, xVariables)}            
+            {displaySubmitButton(polynomial, yVariable, xVariables)}
         </div>
     );
-};
+}

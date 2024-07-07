@@ -1,10 +1,6 @@
 import * as ReactDOM from 'react-dom/client';
 import React from 'react';
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AppContainer } from './AppContainer';
 import { VehicleAnalysis } from './VehicleAnalysis';
 import { About } from './About';
@@ -15,24 +11,24 @@ const root = ReactDOM.createRoot(container);
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <AppContainer/>,
+        path: '/',
+        element: <AppContainer />,
         errorElement: <div> no page here </div>,
         children: [
             {
                 path: '',
-                element: <VehicleAnalysis/>
+                element: <VehicleAnalysis />,
             },
             {
                 path: 'polynomial-model',
-                element: <VehicleAnalysis/>
+                element: <VehicleAnalysis />,
             },
             {
                 path: 'About',
-                element: <About/>
-            }
-        ]
-    }
+                element: <About />,
+            },
+        ],
+    },
 ]);
 
-root.render(<RouterProvider router={router}/>);
+root.render(<RouterProvider router={router} />);

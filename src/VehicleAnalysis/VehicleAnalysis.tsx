@@ -6,48 +6,64 @@ import { Model, LoadStatus } from './types';
 import styles from './style.module.scss';
 
 export function VehicleAnalysis() {
-    const [ modelStatus, setModelStatus ] = useState<LoadStatus>();
-    const [ model, setModel ] = useState<Model>();
+    const [modelStatus, setModelStatus] = useState<LoadStatus>();
+    const [model, setModel] = useState<Model>();
 
     function createGraph() {
         if (modelStatus === LoadStatus.Loading) {
-            return <div className={styles.chartPlaceholder}> ... Loading Model ... </div>
+            return (
+                <div className={styles.chartPlaceholder}>
+                    {' '}
+                    ... Loading Model ...{' '}
+                </div>
+            );
         } else if (modelStatus === LoadStatus.Error) {
-            return <div className={styles.chartPlaceholder}> Unable To Load Model </div>
+            return (
+                <div className={styles.chartPlaceholder}>
+                    {' '}
+                    Unable To Load Model{' '}
+                </div>
+            );
         } else if (modelStatus === LoadStatus.Loaded) {
             return (
                 <>
-                    <iframe className={styles.chartIframe} srcDoc={model.figure}></iframe>
+                    <iframe
+                        className={styles.chartIframe}
+                        srcDoc={model.figure}
+                    ></iframe>
                 </>
-            )
+            );
         }
-        return <div className={styles.chartPlaceholder}> Build Model With Vehicle Attributes </div>
+        return (
+            <div className={styles.chartPlaceholder}>
+                {' '}
+                Build Model With Vehicle Attributes{' '}
+            </div>
+        );
     }
 
     return (
-        <ContentTitlePage 
-            title='Polynomial Model: Vehicle Dataset'
-            content = {
+        <ContentTitlePage
+            title="Polynomial Model: Vehicle Dataset"
+            content={
                 <div className={styles.wrapper}>
                     {/* Chart */}
-                    <div className={styles.chart}>
-                        {createGraph()}
-                    </div>
-                    
+                    <div className={styles.chart}>{createGraph()}</div>
+
                     {/* Chart Inputs */}
                     <div className={styles.chartInputs}>
                         <PolyForm
-                            setModel = {setModel}
-                            setModelStatus = {setModelStatus}
+                            setModel={setModel}
+                            setModelStatus={setModelStatus}
                         />
                     </div>
-                    
+
                     {/* Output Statistics */}
                     <div className={styles.outputStatistics}>
-                        <PolyStatistics/>
+                        <PolyStatistics />
                     </div>
                 </div>
             }
         />
     );
-};
+}

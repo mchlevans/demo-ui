@@ -1,4 +1,4 @@
-// duplicated in vehicle analysis, 
+// duplicated in vehicle analysis,
 // need to make single variable
 $chart-height: 450px;
 
@@ -36,12 +36,11 @@ $chart-height: 450px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-        "dependentVariable      polynomial"
-        "formDivider2            formDivider2"
-        "multiselectContainer   multiselectContainer"
-        "submitForm             submitForm"
+        'dependentVariable      polynomial'
+        'formDivider2            formDivider2'
+        'multiselectContainer   multiselectContainer'
+        'submitForm             submitForm';
 }
-
 
 @media (max-width: 399px) {
     .multiselectContainer {
@@ -52,10 +51,10 @@ $chart-height: 450px;
         height: 600px;
         grid-template-columns: 1fr;
         grid-template-areas:
-            "dependentVariable"
-            "polynomial"
-            "formDivider2"
-            "multiselectContainer"
-            "submitForm"
+            'dependentVariable'
+            'polynomial'
+            'formDivider2'
+            'multiselectContainer'
+            'submitForm';
     }
 }
