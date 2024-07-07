@@ -14,15 +14,15 @@ export function About() {
                     <p>
                         This site is built for demonstration purposes as an
                         exercise in using microservices to construct an
-                        analytics dashboard. I just might reuse this platform in
-                        the future for any interesting analysis that comes up!
+                        analytics dashboard. I may reuse this platform in the
+                        future for any interesting analysis that comes up!
                     </p>
                     <p>
-                        Python has rich selection of open source libraries for
-                        data analysis, but you may not wish to use Python for
-                        all your APIs. The architecture here leverages Python
-                        for data analysis, and Java for all other backend
-                        operations.
+                        Python has a rich selection of open source libraries for
+                        data analysis. That said, you may prefer to use other
+                        languages when building APIs and supporting services.
+                        The architecture here leverages Python for data
+                        analysis, and Java for all other backend operations.
                     </p>
                     <p>
                         Feel free to read about each of the services below, and
@@ -52,7 +52,7 @@ export function About() {
                                 </td>
                                 <td>
                                     {' '}
-                                    <a href="https://github.com/mchlevans/autos-analytics-api">
+                                    <a href="https://github.com/mchlevans/demo-analytics-service">
                                         {' '}
                                         Code{' '}
                                     </a>{' '}
@@ -65,7 +65,7 @@ export function About() {
                                 </td>
                                 <td>
                                     {' '}
-                                    <a href="https://github.com/mchlevans/autos-interface-api">
+                                    <a href="https://github.com/mchlevans/demo-java-service">
                                         {' '}
                                         Code{' '}
                                     </a>{' '}
@@ -81,7 +81,7 @@ export function About() {
                                 </td>
                                 <td>
                                     {' '}
-                                    <a href="https://github.com/mchlevans/demo-analytics-ui">
+                                    <a href="https://github.com/mchlevans/demo-ui">
                                         {' '}
                                         Code{' '}
                                     </a>{' '}
@@ -99,7 +99,7 @@ export function About() {
                     <h2 id="aws-cloud-setup"> AWS Cloud Setup </h2>
                     <p>
                         The goal of the cloud setup here, shown in the diagram
-                        above, is to be as simple and cheap as possible while
+                        above, is to be as simple and cheap as possible, while
                         still meeting all my basic needs. It is not the simplest
                         or cheapest possible AWS setup. I could achieve the same
                         results with less using Lamba functions, but felt the
@@ -108,12 +108,10 @@ export function About() {
                     </p>
                     <p>
                         All microservices, including the Postgres DB, are run
-                        from docker containers, continuing the theme of
-                        simplifying the AWS setup for my needs. I would prefer
-                        the NGINX microservice be the only service held in the
-                        public subnet, with the other microservices isolated in
-                        a private subnet, but doing so would require additional
-                        setup and configuration.
+                        from docker containers. There are changes I would prefer
+                        to make for a production, commercial setup, but for my
+                        personal (and budgetary) needs, I limit my use of AWS
+                        products as much as possible.
                     </p>
                     <p>
                         The Application Load Balancer (ABL) is overkill for this
@@ -154,16 +152,16 @@ export function About() {
 
                     <p>
                         The server-side rendering of figures is potentially the
-                        most controversial part of the analytics services. A
-                        good argument can be made building all figures on the
+                        most controversial part of the analytics service. A good
+                        argument can be made building all figures on the
                         frontend instead. Building all the figures in the
                         frontend would allow for styles to more easily be
                         standardized (as is, figure labels are not in the same
                         font as the rest of the UI). Constructing all UI
                         components in one place could also help avoid confusion
-                        - it should be clear what each microservices job is, and
-                        it is the job of the frontend to display the underlying
-                        data model.
+                        - it should be clear what each microservice's job is,
+                        and it is the job of the frontend to display the
+                        underlying data model.
                     </p>
 
                     <p>
@@ -205,9 +203,9 @@ export function About() {
                         At the moment, the Java API is built to handle the
                         relatively small Vehicle dataset, consisting of just 200
                         rows. If the dataset were millions of rows, pagination
-                        or streams would be required. I would like to add such a
-                        dataset in the future to make this API a bit more
-                        realistic and interesting.
+                        or streams would be critical to the implementation. I
+                        would like to add such a dataset in the future to make
+                        this API a bit more realistic and interesting.
                     </p>
                     <h2 id="NGINX-server-and-frontend">
                         {' '}
@@ -215,9 +213,9 @@ export function About() {
                     </h2>
                     <p>
                         The NGINX server acts as a reverse proxy, forwarding
-                        request from the frontend to the Java API and back. The
-                        NGINX server is the only microservice that needs to be
-                        publicly exposed.
+                        request from the frontend, to the Java API, and back.
+                        The NGINX server is the only microservice that needs to
+                        be publicly exposed.
                     </p>
                     <p>
                         The NGINX server contains the frontend files in memory.

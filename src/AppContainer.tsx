@@ -16,12 +16,12 @@ export function AppContainer() {
                 <nav>
                     <ul>
                         <li>
-                            <Link onClick={resetScroll} to='polynomial-model'>
+                            <Link onClick={resetScroll} to="polynomial-model">
                                 Polynomial Model
                             </Link>
                         </li>
                         <li>
-                            <Link onClick={resetScroll} to='about'>
+                            <Link onClick={resetScroll} to="about">
                                 About
                             </Link>
                         </li>
