@@ -14,7 +14,7 @@ export function PolyStatistics() {
             const item = manufacturerSummary[i];
             const { manufacturer, count } = item;
             results.push(
-                <tr key = {`manufacturerSummaryTr${i}`}>
+                <tr key={`manufacturerSummaryTr${i}`}>
                     <td> {manufacturer} </td>
                     <td> {count} </td>
                 </tr>
@@ -23,17 +23,15 @@ export function PolyStatistics() {
 
         return results;
     }
-    
+
     return (
         <div className={styles.summaryStatsContainer}>
-            <h2>
-                About This Data Set
-            </h2>
-            
-            <p>
-                201 vehicles across 22 manufacturers. Unfortunately the dataset does not include vehicle year.
-            </p>
+            <h2>About This Data Set</h2>
 
+            <p>
+                201 vehicles across 22 manufacturers. Unfortunately the dataset
+                does not include vehicle year.
+            </p>
 
             <table>
                 <thead>
@@ -42,10 +40,8 @@ export function PolyStatistics() {
                         <th> Vehicle Count </th>
                     </tr>
                 </thead>
-                <tbody>
-                    {getManufacturerRows(manufacturerSummary)}
-                </tbody>
+                <tbody>{getManufacturerRows(manufacturerSummary)}</tbody>
             </table>
         </div>
-    )
+    );
 }

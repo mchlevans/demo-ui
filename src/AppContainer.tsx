@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link } from 'react-router-dom';
 import styles from './style.module.scss';
 
 export function AppContainer() {
@@ -15,20 +15,24 @@ export function AppContainer() {
             <div className={styles.side}>
                 <nav>
                     <ul>
-                        <li> 
-                            <Link onClick={resetScroll} to={`polynomial-model`}>Polynomial Model</Link>
+                        <li>
+                            <Link onClick={resetScroll} to='polynomial-model'>
+                                Polynomial Model
+                            </Link>
                         </li>
-                        <li>  
-                            <Link onClick={resetScroll} to={`about`}>About</Link>
+                        <li>
+                            <Link onClick={resetScroll} to='about'>
+                                About
+                            </Link>
                         </li>
-                    </ul>     
+                    </ul>
                 </nav>
             </div>
             <div className={styles.wrapper}>
-                <div id={contentWrapperId}  className={styles.content}> 
-                    <Outlet/>
+                <div id={contentWrapperId} className={styles.content}>
+                    <Outlet />
                 </div>
             </div>
         </div>
-    )
+    );
 }

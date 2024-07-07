@@ -1,5 +1,5 @@
-// hart-height duplicated in form, 
-// need to make single variable
+// chart-height duplicated in form,
+// need to update to be single variable
 $top-padding: 10px;
 $chart-height: 450px;
 
@@ -22,7 +22,7 @@ $chart-height: 450px;
     font-style: italic;
     padding-left: 2%;
     padding-right: 2%;
-    text-align: center
+    text-align: center;
 }
 
 .chart {
@@ -54,16 +54,16 @@ $chart-height: 450px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: min-content auto;
     grid-template-areas:
-        "chart             chart-inputs"
-        "output-statistics output-statistics"
+        'chart             chart-inputs'
+        'output-statistics output-statistics';
 }
 
 @media (max-width: 1290px) {
     .wrapper {
         grid-template-columns: 1fr;
         grid-template-areas:
-            "chart-inputs"
-            "chart"
-            "output-statistics";
+            'chart-inputs'
+            'chart'
+            'output-statistics';
     }
 }

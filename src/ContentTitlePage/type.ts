@@ -1,7 +1,4 @@
-
 interface Props {
-    title: string,
-    content: React.ReactElement
+    title: string;
+    content: React.ReactElement;
 }
-
-
